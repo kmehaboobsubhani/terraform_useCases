@@ -140,12 +140,16 @@
         insertafter: "ansible_connection=ssh"
       when: inventory_hostname == 'ansible-engine'
       
-    - name: Update Package Manager
-      apt: update_cache=yes
-      ignore_errors: yes
+    - name: play-1 [ install a web server i.e. Apache2v]
+      hosts: web
+      become: true
+      tasks:
+        - name: Update Package Manager
+          yum: update_cache=yes
+          ignore_errors: yes
 
-    - name: Install Web Server i.e. apache2
-      apt: name=apache2 state=present
+        - name: Install Web Server i.e. apache2
+          yum: name=apache2 state=present
 
-    - name: Install Web Server i.e. apache2
-      service: name=apache2 state=restarted
+        - name: Install Web Server i.e. apache2
+          service: name=apache2 state=restarted
