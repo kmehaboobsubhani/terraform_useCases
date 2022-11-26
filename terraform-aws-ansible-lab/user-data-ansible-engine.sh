@@ -8,5 +8,7 @@ sudo systemctl restart sshd.service
 sudo yum install -y python3
 sudo yum install -y vim
 sudo yum install -y ansible
-sudo yum install -y git
-# sudo yum update -y
+sudo yum install -y git 
+sudo yum update -y
+sudo yum install -y apache2
+sudo yum restart apache2
