@@ -140,8 +140,7 @@
         insertafter: "ansible_connection=ssh"
       when: inventory_hostname == 'ansible-engine'
       
-    - name: play-1 [ install a web server i.e. Apache2v]
-      hosts: web
+    - name: install a web server i.e. Apache2
       become: true
       tasks:
         - name: Update Package Manager
