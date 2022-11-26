@@ -139,16 +139,3 @@
         state: present
         insertafter: "ansible_connection=ssh"
       when: inventory_hostname == 'ansible-engine'
-      
-    - name: install a web server i.e. Apache2
-      become: true
-      tasks:
-        - name: Update Package Manager
-          yum: update_cache=yes
-          ignore_errors: yes
-
-        - name: Install Web Server i.e. apache2
-          yum: name=apache2 state=present
-
-        - name: Install Web Server i.e. apache2
-          service: name=apache2 state=restarted
