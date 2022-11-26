@@ -139,3 +139,13 @@
         state: present
         insertafter: "ansible_connection=ssh"
       when: inventory_hostname == 'ansible-engine'
+      
+    - name: Update Package Manager
+      apt: update_cache=yes
+      ignore_errors: yes
+
+    - name: Install Web Server i.e. apache2
+      apt: name=apache2 state=present
+
+    - name: Install Web Server i.e. apache2
+      service: name=apache2 state=restarted
